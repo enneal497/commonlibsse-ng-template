@@ -16,6 +16,7 @@ cd commonlibsse-ng-template
 If you want to redirect the build output, set one of or both of the following environment variables:
 - Path to a Skyrim install folder: `XSE_TES5_GAME_PATH`
 - Path to a Mod Manager mods folder: `XSE_TES5_MODS_PATH`
+
 To setup the project, run:
 ```bat
 xmake lua setup.lua MyPluginName
