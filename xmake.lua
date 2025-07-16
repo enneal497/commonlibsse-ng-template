@@ -11,6 +11,8 @@ set_version("0.0.0")
 set_license("GPL-3.0")
 
 -- set defaults
+set_plat("windows")
+set_arch("x64")
 set_languages("c++23")
 set_warnings("allextra")
 set_defaultmode("releasedbg")
@@ -39,6 +41,8 @@ target("commonlibsse-ng-template")
         author = "Enneal",
         description = "SKSE64 plugin template using CommonLibSSE-NG"
     })
+
+    add_defines("UNICODE", "_UNICODE")
 
     -- add src files
     add_files("src/**.cpp")
