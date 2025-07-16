@@ -6,7 +6,7 @@ includes("lib/commonlibsse-ng")
 includes("lib/CLibUtil")
 
 -- set project
-set_project("commonlibsse-ng-template")
+set_project("__plugin_name__")
 set_version("0.0.0")
 set_license("GPL-3.0")
 
@@ -28,7 +28,7 @@ add_rules("plugin.vsxmake.autoupdate")
 add_requires("xbyak", "simpleini")
 
 -- targets
-target("commonlibsse-ng-template")
+target("__plugin_name__")
     -- add dependencies to target
     add_deps("commonlibsse-ng", "CLibUtil")
 
@@ -37,7 +37,7 @@ target("commonlibsse-ng-template")
 
     -- add commonlibsse-ng plugin
     add_rules("commonlibsse-ng.plugin", {
-        name = "commonlibsse-ng-template",
+        name = "__plugin_name__",
         author = "Enneal",
         description = "SKSE64 plugin template using CommonLibSSE-NG"
     })
@@ -49,3 +49,25 @@ target("commonlibsse-ng-template")
     add_headerfiles("include/**.h")
     add_includedirs("include")
     set_pcxxheader("include/pch.h")
+
+    -- copy files to SKSE/Plugins/
+    after_build(function (target)
+        local game_path = os.getenv("XSE_TES5_GAME_PATH")
+        if not game_path then
+            return
+        end
+
+        local project_name = target:name()
+        local src_file = path.join("config", project_name .. ".ini")
+        if not os.exists(src_file) then
+            return
+        end
+
+        local dest_dir = path.join(game_path, "Data", "SKSE", "Plugins")
+        local dest_file = path.join(dest_dir, project_name .. ".ini")
+
+        if os.isdir(dest_dir) then
+            os.cp(src_file, dest_file)
+            print("Copied config to: " .. dest_file)
+        end
+    end)
