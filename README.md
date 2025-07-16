@@ -12,6 +12,14 @@ git clone --recurse-submodules https://github.com/enneal497/commonlibsse-ng-temp
 cd commonlibsse-ng-template
 ```
 
+### Setup
+If you want to redirect the build output, set one of or both of the following environment variables:
+- Path to a Skyrim install folder: `XSE_TES5_GAME_PATH`
+- Path to a Mod Manager mods folder: `XSE_TES5_MODS_PATH`
+```bat
+xmake lua setup.lua PluginName
+```
+
 ### Build
 To build the project, run the following command:
 ```bat
