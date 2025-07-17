@@ -57,17 +57,16 @@ target("__plugin_name__")
             return
         end
 
-        local project_name = target:name()
-        local src_file = path.join("config", project_name .. ".ini")
-        if not os.exists(src_file) then
+        local config_dir = "config"
+        if not os.isdir(config_dir) then
             return
         end
 
         local dest_dir = path.join(game_path, "Data", "SKSE", "Plugins")
-        local dest_file = path.join(dest_dir, project_name .. ".ini")
-
-        if os.isdir(dest_dir) then
-            os.cp(src_file, dest_file)
-            print("Copied config to: " .. dest_file)
+        if not os.isdir(dest_dir) then
+            return
         end
+
+        os.cp(path.join(config_dir, "*"), dest_dir)
+        print("Copied config files to: " .. dest_dir)
     end)
