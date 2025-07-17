@@ -19,7 +19,7 @@ end
 
 function main(plugin_name)
     if not plugin_name then
-        print("Usage: xmake lua scripts/setup.lua <plugin_name>")
+        print("Usage: xmake lua setup.lua <plugin_name>")
         return
     end
 
