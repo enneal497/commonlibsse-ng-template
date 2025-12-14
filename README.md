@@ -42,6 +42,8 @@ xmake project -k vsxmake
 If you want to upgrade the project's dependencies, run the following commands:
 ```bat
 xmake repo --update
+```
+```
 xmake require --upgrade
 ```
 
