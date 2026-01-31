@@ -49,5 +49,3 @@ xmake require --upgrade
 
 ## Documentation
 [Getting Started](https://github.com/Ryan-rsm-McKenzie/CommonLibSSE/wiki/Getting-Started)
-
-Please refer to the [Wiki](https://github.com/libxse/commonlibsse-ng-template/wiki) for more advanced topics.
